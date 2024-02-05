@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34408.163
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FerreteriaApp", "FerreteriaApp\FerreteriaApp.csproj", "{45E94D0E-48D5-44BE-8974-BC5AAD02EEFE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{45E94D0E-48D5-44BE-8974-BC5AAD02EEFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45E94D0E-48D5-44BE-8974-BC5AAD02EEFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45E94D0E-48D5-44BE-8974-BC5AAD02EEFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45E94D0E-48D5-44BE-8974-BC5AAD02EEFE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A58BC50F-6745-4BE3-936B-DB2299F222C3}
+	EndGlobalSection
+EndGlobal

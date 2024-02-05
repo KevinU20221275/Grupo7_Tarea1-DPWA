@@ -1,0 +1,36 @@
+﻿@model FerreteriaModel
+
+@{
+    ViewData["Title"] = "Editar Sucursal";
+}
+
+<h1 class="text-center">Editar Sucursal</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <form asp-action="Edit">
+                @Html.AntiForgeryToken()
+                <div class="mb-3">
+                    <label asp-for="Name" class="form-label">Nombre</label>
+                    <input asp-for="Name" type="text" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Address" class="form-label">Direccion</label>
+                    <input asp-for="Address" type="text" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Phone" class="form-label">Telefono</label>
+                    <input asp-for="Phone" type="text" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Email" class="form-label">Email</label>
+                    <input asp-for="Email" type="text" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-warning">Editar</button>
+                <a asp-action="Index" class="btn btn-primary">Regresar al listado</a>
+            </form>
+
+        </div>
+    </div>
+</div>
