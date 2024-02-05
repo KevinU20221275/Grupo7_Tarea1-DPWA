@@ -17,7 +17,7 @@
         <div class="col-md-12">
 
             <div class="mt-3 mb-3">
-                <a asp-action="Create" asp-controller="Ferreteria" class="btn btn-success">
+                <a asp-action="Create" asp-controller="Ferreteria" class="btn btn-primary">
                     Nueva Sucursal
                 </a>
             </div>
@@ -32,7 +32,7 @@
             }
 
 
-            <table class="table table-bordered table-striped table-responsive">
+            <table class="table table-bordered table-striped table-responsive" id="ferreteriasTable">
                 <thead>
                     <tr>
                         <th>Id</th>
@@ -40,6 +40,7 @@
                         <th>Direccion</th>
                         <th>Telefono</th>
                         <th>Email</th>
+                        <th>Aciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -72,3 +73,47 @@
         </div>
     </div>
 </div>
+
+@section Scripts{
+    <script>
+        $(document).ready(function (){
+            $("#ferreteriasTable").DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    {
+                        extend: 'csv',
+                        className: 'bg-info border-0 text-white',
+                        exportOptions: {
+                            columns: ':not(:eq(5))' // Excluir la columna 5 en la exportación CSV
+                        }
+                    },
+                    {
+                        extend: 'pdf',
+                        className: 'bg-danger border-0 text-white',
+                        exportOptions: {
+                            columns: ':not(:eq(5))' // Excluir la columna 5 en la exportación PDF
+                        }
+                    },
+                    {
+                        extend: 'excel',
+                        className: 'bg-success border-0 text-white',
+                        exportOptions: {
+                            columns: ':not(:eq(5))' // Excluir la columna 5 en la exportación Excel
+                        }
+                    }
+                ],
+                columnDefs: [
+                    {
+                        target: 5,
+                        orderable: false,
+                        searchable: false,
+                        
+                    }
+                ],
+                language: {
+                    url: '//cdn.datatables.net/plug-ins/1.13.7/i18n/es-ES.json',
+                }
+            });
+        })
+    </script>
+}
