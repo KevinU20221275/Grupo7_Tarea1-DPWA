@@ -1,11 +1,21 @@
 ﻿using FerreteriaApp.Data;
 using FerreteriaApp.Models;
+using FerreteriaApp.Validations;
+using FluentValidation;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FerreteriaApp.Controllers
 {
     public class FerreteriaController : Controller
     {
+        private IValidator<FerreteriaModel> _ferreteriaValidator;
+
+        public FerreteriaController(IValidator<FerreteriaModel> ferreteriaValidator)
+        {
+            _ferreteriaValidator = ferreteriaValidator;
+        }
+
         public IActionResult Index()
         {
             FerreteriaData ferreteriaData = new FerreteriaData();
@@ -23,21 +33,21 @@ namespace FerreteriaApp.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(FerreteriaModel ferreteriaModel)
         {
-            try
-            {
-                FerreteriaData ferreteriaData = new FerreteriaData();
-                ferreteriaData.Add(ferreteriaModel);
+            ValidationResult validationResult = _ferreteriaValidator.Validate(ferreteriaModel);
 
-                TempData["SuccessMessage"] = "El registro se creo exitosamente.";
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch (Exception ex)
+            if (!validationResult.IsValid)
             {
-                ViewBag.Error = ex.Message;
+                validationResult.AddToModelState(this.ModelState);
 
                 return View(ferreteriaModel);
             }
+
+            FerreteriaData ferreteriaData = new FerreteriaData();
+            ferreteriaData.Add(ferreteriaModel);
+
+            TempData["SuccessMessage"] = "El registro se creo exitosamente.";
+
+            return RedirectToAction(nameof(Index));
         }
 
         [HttpGet]
@@ -58,21 +68,23 @@ namespace FerreteriaApp.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit(FerreteriaModel ferreteriaModel)
         {
-            try
-            {
-                FerreteriaData ferreteriaData = new FerreteriaData();
-                ferreteriaData.Edit(ferreteriaModel);
+            ValidationResult validationResult = _ferreteriaValidator.Validate(ferreteriaModel);
 
-                TempData["SuccessMessage"] = "El registro se edito exitosamente.";
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch (Exception ex)
+            if (!validationResult.IsValid)
             {
-                ViewBag.Error = ex.Message;
+                validationResult.AddToModelState(this.ModelState);
 
                 return View(ferreteriaModel);
             }
+
+             FerreteriaData ferreteriaData = new FerreteriaData();
+             ferreteriaData.Edit(ferreteriaModel);
+
+             TempData["SuccessMessage"] = "El registro se edito exitosamente.";
+
+             return RedirectToAction(nameof(Index));
+            
+            
         }
 
         [HttpGet]

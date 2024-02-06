@@ -9,26 +9,28 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
+            <div asp-validation-summary="ModelOnly"></div>
+
             <form asp-action="Create">
                 @Html.AntiForgeryToken()
                 <div class="mb-3">
                     <label asp-for="Name" class="form-label"></label>
-                    <input asp-for="Name" type="text" class="form-control">
+                    <input asp-for="Name" type="text" class="form-control" required>
                     <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
                     <label asp-for="Address" class="form-label"></label>
-                    <input asp-for="Address" type="text" class="form-control">
+                    <input asp-for="Address" type="text" class="form-control" required>
                     <span asp-validation-for="Address" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
                     <label asp-for="Phone" class="form-label"></label>
-                    <input asp-for="Phone" type="text" class="form-control">
+                    <input asp-for="Phone" type="text" class="form-control" required>
                     <span asp-validation-for="Phone" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
                     <label asp-for="Email" class="form-label"></label>
-                    <input asp-for="Email" type="email" class="form-control">
+                    <input asp-for="Email" type="email" class="form-control" required>
                     <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
