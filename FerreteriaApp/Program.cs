@@ -1,6 +1,7 @@
 using FerreteriaApp.Models;
 using FerreteriaApp.Validations;
 using FluentValidation;
+using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,11 @@ builder.Services.AddControllersWithViews();
 
 // Add validator services to Ferreterias model
 builder.Services.AddScoped<IValidator<FerreteriaModel>, FerreteriasValidator>();
+
+// Add validator services to Product model
+builder.Services.AddScoped<IValidator<ProductModel>, ProductValidator>();
+
+ValidatorOptions.Global.LanguageManager.Culture = new CultureInfo("es");
 
 var app = builder.Build();
 

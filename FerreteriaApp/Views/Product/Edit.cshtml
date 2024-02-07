@@ -1,0 +1,52 @@
+﻿@model ProductModel
+
+
+@{
+    ViewData["Title"] = "Editar Producto";
+}
+
+<h1>Editar Producto</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div asp-validation-summary="ModelOnly"></div>
+
+            <form asp-action="Edit">
+                @Html.AntiForgeryToken()
+                <div class="mb-3">
+                    <label asp-for="ProductName" class="form-label"></label>
+                    <input asp-for="ProductName" type="text" class="form-control">
+                    <span asp-validation-for="ProductName" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="ProductDescription" class="form-label"></label>
+                    <input asp-for="ProductDescription" type="text" class="form-control">
+                    <span asp-validation-for="ProductDescription" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="ProductCategory" class="form-label"></label>
+                    <input asp-for="ProductCategory" type="text" class="form-control">
+                    <span asp-validation-for="ProductCategory" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Stock" class="form-label"></label>
+                    <input asp-for="Stock" type="number" class="form-control">
+                    <span asp-validation-for="Stock" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Price" class="form-label"></label>
+                    <input asp-for="Price" type="text" class="form-control">
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="ExpirationDate" class="form-label"></label>
+                    <input asp-for="ExpirationDate" type="date" class="form-control">
+                    <span asp-validation-for="ExpirationDate" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+        </div>
+    </div>
+</div>
